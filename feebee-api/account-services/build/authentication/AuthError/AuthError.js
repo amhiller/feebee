@@ -1,0 +1,24 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+var AuthError;
+(function (AuthError) {
+    AuthError["usernameAlreadyExists"] = "UsernameAlreadyExists";
+    AuthError["passwordNotAllowed"] = "PasswordNotAllowed";
+    AuthError["passwordTooShort"] = "PasswordTooShort";
+    AuthError["usernameInvalide"] = "UsernameInvalid";
+    AuthError["usernameInvalid"] = "UsernameInvalid";
+    AuthError["unknownError"] = "unknownError";
+    AuthError["userIsNotConfirmed"] = "userIsNotConfirmed";
+    AuthError["incorrectUsernameOrPassword"] = "incorrectUsernameOrPassword";
+    AuthError["userDoesNotExist"] = "userDoesNotExist";
+    AuthError["userDisabled"] = "userDisabled";
+    AuthError["invalidSession"] = "invalidSession";
+    AuthError["usernameCannotBeEmpty"] = "usernameCannotBeEmpty";
+    AuthError["passwordLowerCaseMissing"] = "passwordLowerCaseMissing";
+    AuthError["passwordSepcialCharacterMissing"] = "passwordSepcialCharacterMissing";
+    AuthError["passwordUpperCaseMissing"] = "passwordUpperCaseMissing";
+    AuthError["invalidAccessToken"] = "invalidAccessToken";
+    AuthError["accessTokenRevoked"] = "accessTokenRevoked";
+    AuthError["userdisabled"] = "userdisabled";
+})(AuthError || (AuthError = {}));
+exports.default = AuthError;
