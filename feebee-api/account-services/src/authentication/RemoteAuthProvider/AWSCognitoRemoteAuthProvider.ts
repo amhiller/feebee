@@ -3,7 +3,6 @@ import AuthError from '../AuthError/AuthError';
 import RemoteAuthProvider from '../RemoteAuthProvider/RemoteAuthProvider';
 import AWS from 'aws-sdk';
 import jwt_decode from 'jwt-decode';
-import { BlockScopeAwareRuleWalker } from 'tslint';
 
 class AWSCognitoRemoteAuthProvider implements RemoteAuthProvider{
 
