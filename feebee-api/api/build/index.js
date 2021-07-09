@@ -39,39 +39,38 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-var AWSCognitoRemoteAuthProvider_1 = __importDefault(require("../authentication/RemoteAuthProvider/AWSCognitoRemoteAuthProvider"));
-var userPoolId = "us-east-1_C7n0HI74d";
-var ClientId = "42eqrhv4aeiu3oe0r2pt79sp9n";
-describe('Authentication Manager', function () {
-    var authManager;
-    console.log(authManager);
-    beforeEach(function () { return __awaiter(void 0, void 0, void 0, function () {
-        return __generator(this, function (_a) {
-            authManager = new AWSCognitoRemoteAuthProvider_1.default(userPoolId, ClientId);
-            console.log(authManager);
-            return [2 /*return*/];
-        });
-    }); });
-    it('Should work and print authManager', function () {
-        console.log(authManager);
-        expect(true).toBeTruthy();
+var server_1 = __importDefault(require("./apollo/server"));
+var mongoose = require("mongoose");
+var port = 4000;
+//database
+var db = function () { return __awaiter(void 0, void 0, void 0, function () {
+    var success, error_1;
+    return __generator(this, function (_a) {
+        switch (_a.label) {
+            case 0:
+                _a.trys.push([0, 2, , 3]);
+                return [4 /*yield*/, mongoose.connect(process.env.DBCLOUD, {
+                        useNewUrlParser: true,
+                        useUnifiedTopology: true,
+                        useCreateIndex: true,
+                        useFindAndModify: false
+                    })];
+            case 1:
+                success = _a.sent();
+                console.log('DB Connected');
+                return [3 /*break*/, 3];
+            case 2:
+                error_1 = _a.sent();
+                console.log('DB Connection error', error_1);
+                return [3 /*break*/, 3];
+            case 3: return [2 /*return*/];
+        }
     });
-    it('Should create a new account with email and password', function () { return __awaiter(void 0, void 0, void 0, function () {
-        var email, phoneNumber, password, authSession;
-        return __generator(this, function (_a) {
-            switch (_a.label) {
-                case 0:
-                    email = "amhiller96@gmail.com";
-                    phoneNumber = '631-241-5763';
-                    password = "123abcdeA!";
-                    return [4 /*yield*/, authManager.signUp(email, '', password)];
-                case 1:
-                    authSession = _a.sent();
-                    console.log(authSession);
-                    expect(authSession.userId).not.toBeUndefined();
-                    expect(authSession.userVerified).toBe(false);
-                    return [2 /*return*/];
-            }
-        });
-    }); });
+}); };
+db();
+server_1.default()
+    .listen({ port: port })
+    .then(function (_a) {
+    var url = _a.url;
+    console.log("api server ready at " + url);
 });

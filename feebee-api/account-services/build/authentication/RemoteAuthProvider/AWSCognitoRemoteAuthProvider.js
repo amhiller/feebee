@@ -48,7 +48,7 @@ var AWSCognitoRemoteAuthProvider = /** @class */ (function () {
             UserPoolId: userPoolId,
             ClientId: clientId
         };
-        this.cognitoidentityserviceprovider = new aws_sdk_1.default.CognitoIdentityServiceProvider({ 'region': 'us-east-2' });
+        this.cognitoidentityserviceprovider = new aws_sdk_1.default.CognitoIdentityServiceProvider({ 'region': 'us-east-1' });
     }
     AWSCognitoRemoteAuthProvider.prototype.signIn = function (username, password) {
         var _this = this;

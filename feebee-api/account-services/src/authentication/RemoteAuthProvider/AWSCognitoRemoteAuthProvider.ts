@@ -13,7 +13,7 @@ class AWSCognitoRemoteAuthProvider implements RemoteAuthProvider{
             UserPoolId: userPoolId,
             ClientId: clientId
         };
-        this.cognitoidentityserviceprovider = new AWS.CognitoIdentityServiceProvider({'region': 'us-east-2'});
+        this.cognitoidentityserviceprovider = new AWS.CognitoIdentityServiceProvider({'region': 'us-east-1'});
     }
 
     signIn(username: string, password: string): Promise<any> {
@@ -110,7 +110,7 @@ class AWSCognitoRemoteAuthProvider implements RemoteAuthProvider{
                 }
                 }
                 else {
-                resolve(new AuthSession(data.UserSub, '', false))
+                    resolve(new AuthSession(data.UserSub, '', false))
                 }
             });
             });

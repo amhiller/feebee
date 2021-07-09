@@ -11,6 +11,7 @@ describe('Authentication Manager', () => {
 
     beforeEach(async () => {
         authManager = new AWSCognitoRemoteAuthProvider(userPoolId, ClientId)
+        console.log(authManager)
     })
 
     
@@ -21,19 +22,16 @@ describe('Authentication Manager', () => {
 
     it('Should create a new account with email and password', async () => {
         let email = `amhiller96@gmail.com`
+        let phoneNumber = '631-241-5763'
         let password = `123abcdeA!`
 
         let authSession = await authManager.signUp(email, '', password)
-
+         
         console.log(authSession)
 
         expect(authSession.userId).not.toBeUndefined()
-        expect(authSession.emailVerified).toBe(false)
+        expect(authSession.userVerified).toBe(false)
     })
-
-
-
-    
 
 })
 
